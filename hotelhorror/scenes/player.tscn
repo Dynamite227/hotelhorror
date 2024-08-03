@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://bn16cofnpid7m"]
+
+[ext_resource type="Script" path="res://scripts/playercontrol.gd" id="1_56wfd"]
+[ext_resource type="Texture2D" uid="uid://c4k2uivflxvy6" path="res://icon.svg" id="2_232nb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ly2kd"]
+radius = 48.0
+
+[sub_resource type="Gradient" id="Gradient_e6f4f"]
+offsets = PackedFloat32Array(0.0779221, 0.61039)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bibil"]
+gradient = SubResource("Gradient_e6f4f")
+fill = 1
+fill_from = Vector2(0.0504587, 1)
+metadata/_snap_count = 14
+
+[sub_resource type="Gradient" id="Gradient_qichu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3vbni"]
+gradient = SubResource("Gradient_qichu")
+
+[sub_resource type="Gradient" id="Gradient_raltd"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_05wnh"]
+gradient = SubResource("Gradient_raltd")
+
+[sub_resource type="Gradient" id="Gradient_xwxwj"]
+offsets = PackedFloat32Array(0.961039, 0.974026)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ua74y"]
+gradient = SubResource("Gradient_xwxwj")
+fill = 1
+fill_from = Vector2(0.573394, 0.550459)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+light_mask = 2
+offset_left = -1280.0
+offset_top = -1111.0
+offset_right = -1240.0
+offset_bottom = -1071.0
+scale = Vector2(90.2536, 47.279)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_56wfd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_ly2kd")
+
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/CollisionShape2D"]
+visible = false
+position = Vector2(54, 3)
+rotation = 0.785398
+scale = Vector2(5.33747, 4.89268)
+color = Color(1, 1, 0.815686, 1)
+energy = 1.05
+range_z_max = 4
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_bibil")
+offset = Vector2(51.845, -52.625)
+texture_scale = 1.65
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CharacterBody2D/CollisionShape2D"]
+position = Vector2(-2, 4)
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/CollisionShape2D"]
+z_index = 1
+position = Vector2(1, -5.72205e-06)
+scale = Vector2(0.796875, 0.687499)
+texture = ExtResource("2_232nb")
+
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/CollisionShape2D/Sprite2D"]
+position = Vector2(0.627455, 1.45455)
+scale = Vector2(1.82353, 1.90909)
+texture = SubResource("GradientTexture2D_3vbni")
+
+[node name="Polygon2D" type="Polygon2D" parent="CharacterBody2D/CollisionShape2D"]
+position = Vector2(61.7637, 4)
+scale = Vector2(1.72095, 0.775)
+color = Color(1, 1, 0.756863, 1)
+texture = SubResource("GradientTexture1D_05wnh")
+polygon = PackedVector2Array(-9, 3, 250, -300, 250, 300)
+
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/CollisionShape2D/Polygon2D"]
+position = Vector2(0.108716, 2.58065)
+scale = Vector2(0.564028, 1.78558)
+energy = 0.65
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_ua74y")
+offset = Vector2(222.95, 0)
+texture_scale = 7.2
